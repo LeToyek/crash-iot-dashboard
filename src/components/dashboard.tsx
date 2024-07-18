@@ -26,14 +26,14 @@ type Menu = {
   };
 };
 
-const menuList : Menu[]= [
+const menuList: Menu[] = [
   {
     name: "Budi Truck",
     driverId: "zzqe9183",
     status: "active",
     pinPosition: {
-      lat: -3.745,
-      lng: -38.523,
+      lat: -7.947337520508606,
+      lng: 112.6171593146235,
     },
   },
   {
@@ -41,8 +41,8 @@ const menuList : Menu[]= [
     driverId: "doask9183",
     status: "active",
     pinPosition: {
-      lat: -3.745,
-      lng: -39.523,
+      lat: -7.949819503651353,
+      lng: 112.61545228834466,
     },
   },
   {
@@ -50,20 +50,47 @@ const menuList : Menu[]= [
     driverId: "zxczx9183",
     status: "Inactive",
     pinPosition: {
-      lat: -4.745,
-      lng: -38.523,
+      lat: -7.943074949173004,
+      lng: 112.61031304939335,
+    },
+  },
+  {
+    name: "Agus Truck",
+    driverId: "zzqe9183",
+    status: "active",
+    pinPosition: {
+      lat: -7.935246590039299,
+      lng: 112.61667379674499,
+    },
+  },
+  {
+    name: "Tio Truck",
+    driverId: "doask9183",
+    status: "active",
+    pinPosition: {
+      lat: -7.936847149291131,
+      lng: 112.62628903266187,
+    },
+  },
+  {
+    name: "Febri Truck",
+    driverId: "zxczx9183",
+    status: "active",
+    pinPosition: {
+      lat: -7.955978522682179, 
+      lng: 112.61509187316861
     },
   },
 ];
 
 const Dashboard: React.FC = () => {
   const [center, setCenter] = useState({
-    lat: -3.745,
-    lng: -38.523,
+    lat: -7.947337520508606,
+    lng: 112.6171593146235,
   });
   const [selected, setSelected] = useState<Menu | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const onButtonClick = (item:Menu,index:number) => {
+  const onButtonClick = (item: Menu, index: number) => {
     return (e: google.maps.MapMouseEvent) => {
       setSelected(item);
       setSelectedIndex(index);
@@ -79,7 +106,9 @@ const Dashboard: React.FC = () => {
   return (
     <div className="relative h-screen">
       <div className="absolute top-0 left-0 w-1/4 h-full bg-white z-10 shadow-sm rounded-lg">
-        <h2 className="text-xl font-bold p-4 bg-sky-300 text-white">IOT Monitoring</h2>
+        <h2 className="text-xl font-bold p-4 bg-sky-300 text-white">
+          IOT Monitoring
+        </h2>
         <ul>
           {menuList.map((item, index) => (
             <li
@@ -132,7 +161,7 @@ const Dashboard: React.FC = () => {
                 title="Truck"
                 cursor="pointer"
                 children={item.name}
-                onClick={onButtonClick(item,index)}
+                onClick={onButtonClick(item, index)}
                 position={item.pinPosition}
               ></MarkerF>
             ))}
@@ -148,7 +177,7 @@ const Dashboard: React.FC = () => {
         className="absolute bottom-0 right-0 w-3/4 bg-white 
           p-4 z-10 justify-center flex items-center shadow-xl"
       >
-        {selected? (
+        {selected ? (
           <table className="table-auto w-1/2">
             <tbody>
               <tr>
@@ -181,7 +210,7 @@ const Dashboard: React.FC = () => {
               </tr>
             </tbody>
           </table>
-        ):(
+        ) : (
           "Click on the truck to see details"
         )}
       </div>

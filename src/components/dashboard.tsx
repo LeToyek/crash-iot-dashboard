@@ -14,10 +14,19 @@ const mapContainerStyle = {
 
 const bottomStyle = {
   maxHeight: "140px",
-  overflowY: "auto",
 };
 
-const menuList = [
+type Menu = {
+  name: string;
+  driverId: string;
+  status: string;
+  pinPosition: {
+    lat: number;
+    lng: number;
+  };
+};
+
+const menuList : Menu[]= [
   {
     name: "Budi Truck",
     driverId: "zzqe9183",
@@ -52,15 +61,15 @@ const Dashboard: React.FC = () => {
     lat: -3.745,
     lng: -38.523,
   });
-  const [selected, setSelected] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(null);
-  const onButtonClick = (item,index) => {
-    return (e) => {
+  const [selected, setSelected] = useState<Menu | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const onButtonClick = (item:Menu,index:number) => {
+    return (e: google.maps.MapMouseEvent) => {
       setSelected(item);
       setSelectedIndex(index);
       setCenter({
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
+        lat: e.latLng!.lat(),
+        lng: e.latLng!.lng(),
       });
     };
   };

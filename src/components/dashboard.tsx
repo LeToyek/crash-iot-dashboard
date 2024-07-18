@@ -30,7 +30,7 @@ const menuList: Menu[] = [
   {
     name: "Budi Truck",
     driverId: "zzqe9183",
-    status: "active",
+    status: "crash",
     pinPosition: {
       lat: -7.947337520508606,
       lng: 112.6171593146235,
@@ -130,8 +130,9 @@ const Dashboard: React.FC = () => {
                 <span
                   className={`px-2 py-1 text-xs font-medium rounded-full ${
                     item.status === "active"
-                      ? "bg-green-100 text-green-800"
-                      : "bg-red-100 text-red-800"
+                      ? "bg-green-100 text-green-800":
+                      item.status === 'crash'? "bg-red-100 text-red-800"
+                      : "bg-gray-100 text-gray-800"
                   }`}
                 >
                   {item.status}
